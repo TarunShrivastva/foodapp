@@ -33,11 +33,9 @@ class FoodController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
-        $grid->column('rating', __('Rating'));
-        $grid->column('restaurent_id', __('Restaurent id'));
-        $grid->column('country_id', __('Country id'));
-        $grid->column('state_id', __('State id'));
-        $grid->column('city_id', __('City id'));
+        $grid->country()->name('Country');
+        $grid->state()->name('State');
+        $grid->city()->name('City');
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->column('deleted_at', __('Deleted at'));
@@ -57,11 +55,9 @@ class FoodController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
-        $show->field('rating', __('Rating'));
-        $show->field('restaurent_id', __('Restaurent id'));
-        $show->field('country_id', __('Country id'));
-        $show->field('state_id', __('State id'));
-        $show->field('city_id', __('City id'));
+        $show->field('country_id', __('Country'));
+        $show->field('state_id', __('State'));
+        $show->field('city_id', __('City'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
         $show->field('deleted_at', __('Deleted at'));
@@ -79,8 +75,6 @@ class FoodController extends AdminController
         $form = new Form(new Food());
 
         $form->text('title', __('Title'));
-        $form->number('rating', __('Rating'))->attribute(['max' => '5', 'min' => '0'])->default(0);
-        $form->select('restaurent_id', __('Restaurent'))->options(Restaurent::all()->pluck('name', 'id'))->rules('required');
         $form->select('country_id', __('Country'))->options(Country::all()->pluck('name', 'id'))->rules('required');
         $form->select('state_id', __('State'))->options(State::all()->pluck('name', 'id'))->rules('required');
         $form->select('city_id', __('City'))->options(City::all()->pluck('name', 'id'))->rules('required');

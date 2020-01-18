@@ -17,17 +17,57 @@ class Restaurent extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'street', 'rating', 'country_id', 'state_id', 'city_id'
+        'name', 'street', 'rating_id', 'country_id', 'state_id', 'city_id'
     ];
 
     /**
-     * Relationship between state
+     * Get state for the restaurent
      *
-     * @var array
+     * @return  object
      */
     public function state()
     {
-        
+        return  $this->belongsTo(State::class);
+    }
+
+    /**
+     * Get country for the restaurent
+     *
+     * @return  object
+     */
+    public function country()
+    {
+        return  $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get city for the restaurent
+     *
+     * @return  object
+     */
+    public function city()
+    {
+        return  $this->belongsTo(City::class);
+    }
+
+    /**
+     * Get the food available in the restaurent.
+     *
+     * @return object
+     */
+    public function foods()
+    {
+        return $this->belongsToMany(Food::class)->withTimestamps()->withPivot('deleted_at');
+    }
+
+    /**
+     * Get rating for the restaurent
+     *
+     * @return  object
+     */
+    public function rating()
+    {
+        return  $this->belongsTo(Rating::class);
     }
 
 }

@@ -14,11 +14,10 @@ class CreateFoodRestaurentTable extends Migration
     public function up()
     {
         Schema::create('food_restaurent', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('food_id')->unsigned()->nullable();
+            $table->bigInteger('food_id')->unsigned();
             $table->foreign('food_id')->references('id')
                     ->on('foods');
-            $table->bigInteger('restaurent_id')->unsigned()->nullable();
+            $table->bigInteger('restaurent_id')->unsigned();
             $table->foreign('restaurent_id')->references('id')
                     ->on('restaurents');
             $table->timestamps();

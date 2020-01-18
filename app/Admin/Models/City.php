@@ -19,4 +19,15 @@ class city extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get restaurents belongs to the city.
+     *
+     * @return object
+     */
+    public function restaurents()
+    {
+        return $this->hasMany(Restaurent::class);
+    } 
+
 }

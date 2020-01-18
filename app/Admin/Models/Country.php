@@ -19,4 +19,15 @@ class Country extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get restaurents belongs to country.
+     *
+     * @return object
+     */
+    public function restaurents()
+    {
+        return $this->hasMany(Restaurent::class);
+    }
+
 }

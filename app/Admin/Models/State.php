@@ -19,4 +19,14 @@ class State extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get restaurent belongs to the state
+     *
+     * @return object
+     */
+    public function restaurents()
+    {
+        return $this->hasMany(Restaurent::class);
+    } 
 }

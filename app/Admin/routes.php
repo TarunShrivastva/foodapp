@@ -16,5 +16,6 @@ Route::group([
     $router->resource('cities', CityController::class);
     $router->resource('restaurents', RestaurentController::class);
     $router->resource('foods', FoodController::class);
-    $router->resource('restaurents_with_foods', RestaurentFoodController::class);
+    $router->resource('users', UserController::class);
+    $router->resource('ratings', RatingController::class);
 });

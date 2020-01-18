@@ -1,4 +1,4 @@
-<?php
+`<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,7 +17,7 @@ class CreateRestaurentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('street');
-            $table->integer('rating')->unsigned()->default(0);
+            $table->integer('rating_id')->unsigned();
             $table->integer('country_id')->unsigned();
             $table->integer('state_id')->unsigned();
             $table->integer('city_id')->unsigned();
