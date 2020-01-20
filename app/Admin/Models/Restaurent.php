@@ -70,4 +70,24 @@ class Restaurent extends Model
         return  $this->belongsTo(Rating::class);
     }
 
+    /**
+     * To get Restaurent Rating By Restaurent.
+     *
+     * @return object 
+     */
+    public function restaurentRating()
+    {
+        return $this->hasMany(RestaurentRating::class, 'restaurent_id');
+    }
+
+    /**
+     * To get Restaurents Review By Restaurent.
+     *
+     * @return object
+     */
+    public function restaurentReview()
+    {
+        return $this->hasMany(RestaurentReview::class, 'restaurent_id');
+    }
+
 }

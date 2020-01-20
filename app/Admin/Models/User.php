@@ -37,4 +37,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * To get Restaurents Rating By User.
+     *
+     * @return object
+     */
+    public function restaurentRating()
+    {
+        return $this->hasMany(RestaurentRating::class, 'user_id');
+    }
+
+    /**
+     * To get Restaurents Review By User.
+     *
+     * @return object
+     */
+    public function restaurentReview()
+    {
+        return $this->hasMany(RestaurentReview::class, 'user_id');
+    }
+
 }

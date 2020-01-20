@@ -1,10 +1,10 @@
-`<?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRestaurentsTable extends Migration
+class CreateRestaurentReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateRestaurentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('restaurents', function (Blueprint $table) {
+        Schema::create('restaurent_reviews', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('street');
-            $table->integer('country_id')->unsigned();
-            $table->integer('state_id')->unsigned();
-            $table->integer('city_id')->unsigned();
+            $table->text('review');
+            $table->integer('user_id')->unsigned();
+            $table->integer('restaurent_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +30,6 @@ class CreateRestaurentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restaurents');
+        Schema::dropIfExists('restaurent_reviews');
     }
 }

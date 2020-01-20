@@ -34,7 +34,6 @@ class RestaurentController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('street', __('Street'));
-        $grid->rating()->rating('Rating');
         $grid->country()->name('Country');
         $grid->state()->name('State');
         $grid->city()->name('City');
@@ -58,7 +57,6 @@ class RestaurentController extends AdminController
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
         $show->field('street', __('Street'));
-        $show->field('rating', __('Rating'));
         $show->field('country_id', __('Country'));
         $show->field('state_id', __('State'));
         $show->field('city_id', __('City'));
@@ -80,7 +78,6 @@ class RestaurentController extends AdminController
 
         $form->text('name', __('Name'));
         $form->textarea('street', __('Street'))->rules('required|min:3');
-        $form->select('rating_id', __('Rating'))->options(Rating::all()->pluck('rating', 'id'));
         $form->multipleSelect('foods', 'Food Available')->options(Food::all()->pluck('title', 'id'));
         $form->select('country_id', __('Country'))->options(Country::all()->pluck('name', 'id'))->rules('required');
         $form->select('state_id', __('State'))->options(State::all()->pluck('name', 'id'))->rules('required');

@@ -18,4 +18,6 @@ Route::group([
     $router->resource('foods', FoodController::class);
     $router->resource('users', UserController::class);
     $router->resource('ratings', RatingController::class);
+    $router->resource('restaurent-ratings', RestaurentRatingController::class);
+    $router->resource('restaurent-reviews', RestaurentReviewController::class);
 });

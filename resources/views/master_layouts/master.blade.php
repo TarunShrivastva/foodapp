@@ -12,10 +12,6 @@
 			<!-- content -->
 				@include('master_layouts.content')
 			<!-- / content -->
-			</div>
-		</div>
-	</div>
-</div>		
 <div class="body3">
 	<div class="main zerogrid">
 <!-- footer -->
@@ -24,5 +20,6 @@
 	</div>
 </div>
 <script type="text/javascript"> Cufon.now(); </script>
+@yield('jsContent')
 </body>
 </html>

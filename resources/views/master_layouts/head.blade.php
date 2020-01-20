@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="{{ URL::to('css/style.css') }}" type="text/css" media="all">
 <link rel="stylesheet" href="{{ URL::to('css/zerogrid.css') }}" type="text/css" media="all">
 <link rel="stylesheet" href="{{ URL::to('css/responsive.css') }}" type="text/css" media="all"> 
-<link rel="stylesheet" href="{{ URL::to('css/responsiveslides.css') }}" /> 
+<link rel="stylesheet" href="{{ URL::to('css/responsiveslides.css') }}" />
+@yield('cssContent') 
 <script type="text/javascript" src="{{ URL::to('js/jquery-1.6.js') }}" ></script>
 <script type="text/javascript" src="{{ URL::to('js/cufon-yui.js') }}"></script>
 <script type="text/javascript" src="{{ URL::to('js/cufon-replace.js') }}"></script>  
