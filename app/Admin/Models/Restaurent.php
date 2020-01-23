@@ -17,7 +17,7 @@ class Restaurent extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'street', 'rating_id', 'country_id', 'state_id', 'city_id'
+        'name', 'image', 'street', 'rating_id', 'country_id', 'state_id', 'city_id'
     ];
 
     /**
@@ -57,37 +57,27 @@ class Restaurent extends Model
      */
     public function foods()
     {
-        return $this->belongsToMany(Food::class)->withTimestamps()->withPivot('deleted_at');
+        return $this->hasMany(Food::class, 'restaurent_id');
     }
 
     /**
-     * Get rating for the restaurent
+     * Get restaurent have the orders 
      *
      * @return  object
      */
-    public function rating()
+    public function order()
     {
-        return  $this->belongsTo(Rating::class);
+        return  $this->hasMany(Order::class,'restaurent_id');
     }
 
     /**
-     * To get Restaurent Rating By Restaurent.
+     * To get Restaurent Rating & Review By Restaurent.
      *
      * @return object 
      */
-    public function restaurentRating()
+    public function RestaurentReviewRating()
     {
-        return $this->hasMany(RestaurentRating::class, 'restaurent_id');
-    }
-
-    /**
-     * To get Restaurents Review By Restaurent.
-     *
-     * @return object
-     */
-    public function restaurentReview()
-    {
-        return $this->hasMany(RestaurentReview::class, 'restaurent_id');
+        return $this->hasMany(RestaurentReviewRating::class,'restaurent_id');
     }
 
 }

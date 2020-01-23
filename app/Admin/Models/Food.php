@@ -17,7 +17,7 @@ class Food extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'country_id', 'state_id', 'city_id'
+        'name', 'category_id', 'subcategory_id','image', 'price', 'restaurent_id'
     ];
 
     /**
@@ -50,15 +50,14 @@ class Food extends Model
         return  $this->belongsTo(City::class);
     }
 
-
     /**
-     * Get the restaurents have the food.
+     * Get food belongs to the order 
      *
-     * @return object
+     * @return  object
      */
-    public function restaurents()
+    public function order()
     {
-        return $this->belongsToMany(Restaurent::class)->withTimestamps()->withPivot('deleted_at');
+        return $this->belongsToMany(Order::class)->withTimestamps()->withPivot('deleted_at');
     }
 
 }

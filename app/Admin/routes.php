@@ -17,7 +17,9 @@ Route::group([
     $router->resource('restaurents', RestaurentController::class);
     $router->resource('foods', FoodController::class);
     $router->resource('users', UserController::class);
-    $router->resource('ratings', RatingController::class);
-    $router->resource('restaurent-ratings', RestaurentRatingController::class);
-    $router->resource('restaurent-reviews', RestaurentReviewController::class);
+    $router->resource('orders', OrderController::class);
+    $router->resource('restaurent-review-ratings', RestaurentReviewRatingController::class);
+    $router->resource('categories', CategoryController::class);
+    $router->resource('sub-categories', SubCategoryController::class);
+    $router->resource('regions', RegionController::class);
 });

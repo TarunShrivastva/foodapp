@@ -16,6 +16,7 @@ class CreateRestaurentsTable extends Migration
         Schema::create('restaurents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->string('image');
             $table->string('street');
             $table->integer('country_id')->unsigned();
             $table->integer('state_id')->unsigned();

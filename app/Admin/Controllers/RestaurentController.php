@@ -7,7 +7,8 @@ use App\Admin\Models\State;
 use App\Admin\Models\City;
 use App\Admin\Models\Country;
 use App\Admin\Models\Food;
-use App\Admin\Models\Rating;
+use App\Admin\Models\Category;
+use App\Admin\Models\SubCategory;
 
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -75,13 +76,23 @@ class RestaurentController extends AdminController
     protected function form()
     {
         $form = new Form(new Restaurent());
+        $form->tab('Restaurent',function(Form $form){
+            $form->text('name', __('Name'));
+            $form->textarea('street', __('Street'))->rules('required|min:3');
+            $form->select('country_id', __('Country'))->options(Country::all()->pluck('name', 'id'))->rules('required');
+            $form->select('state_id', __('State'))->options(State::all()->pluck('name', 'id'))->rules('required');
+            $form->select('city_id', __('City'))->options(City::all()->pluck('name', 'id'))->rules('required');
+        },true);
+        $form->tab('Food',function(Form $form){
+            $form->hasMany('foods', function (Form\NestedForm $form){
+            $form->select('category_id', __('Category'))->options(Category::all()->pluck('name', 'id'))->rules('required');
+            $form->select('subcategory_id', __('Sub Category'))->options(SubCategory::all()->pluck('name', 'id'));
+            $form->text('name', __('Name'));
+            $form->text('price',__('Price'))->  rules('required');
+            $form->image('image',__('Image'))->uniqueName()->rules('mimes:jpg,jpeg,png');
+            });
+        });
 
-        $form->text('name', __('Name'));
-        $form->textarea('street', __('Street'))->rules('required|min:3');
-        $form->multipleSelect('foods', 'Food Available')->options(Food::all()->pluck('title', 'id'));
-        $form->select('country_id', __('Country'))->options(Country::all()->pluck('name', 'id'))->rules('required');
-        $form->select('state_id', __('State'))->options(State::all()->pluck('name', 'id'))->rules('required');
-        $form->select('city_id', __('City'))->options(City::all()->pluck('name', 'id'))->rules('required');
         $form->display('created_at', 'Created time');
         $form->display('updated_at', 'Updated time');
         return $form;

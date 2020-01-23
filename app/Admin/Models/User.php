@@ -39,23 +39,18 @@ class User extends Authenticatable
     ];
 
     /**
-     * To get Restaurents Rating By User.
+     * Get user belongs to the order 
      *
-     * @return object
+     * @return  object
      */
-    public function restaurentRating()
+    public function order()
     {
-        return $this->hasMany(RestaurentRating::class, 'user_id');
+        return  $this->hasMany(Order::class, 'user_id');
     }
 
-    /**
-     * To get Restaurents Review By User.
-     *
-     * @return object
-     */
-    public function restaurentReview()
+    public function RestaurentReviewRating()
     {
-        return $this->hasMany(RestaurentReview::class, 'user_id');
+        return $this->hasMany(RestaurentReviewRating::class,'user_id');
     }
 
 }
