@@ -1,5 +1,5 @@
 <header>
-	<h1><a href="index.html" id="logo"><img src="images/logo.png"/></a></h1>
+	<h1><a href="index.html" id="logo"><img src="{{ URL::to('/')}}/images/logo.png"/></a></h1>
 	<nav>
 		<ul id="top_nav">
 			<li><a href="index.html"><img src="images/icon_1.gif" alt=""></a></li>

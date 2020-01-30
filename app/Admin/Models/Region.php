@@ -19,4 +19,9 @@ class Region extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function restaurent()
+    {
+        return $this->belongsToMany(Restaurent::class)->withTimestamps()->withPivot('deleted_at');
+    }
 }

@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/', 'Frontend\HomePageController');
+Route::get('/home', 'Frontend\HomePageController@index');
+// Route::resource('/home', 'Frontend\HomePageController');

@@ -10,7 +10,8 @@
 				@include('master_layouts.header')
 			<!-- / header -->
 			<!-- content -->
-				@include('master_layouts.content')
+				@yield('content')
+				{{-- @include('master_layouts.content') --}}
 			<!-- / content -->
 <div class="body3">
 	<div class="main zerogrid">

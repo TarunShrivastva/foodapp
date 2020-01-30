@@ -9,6 +9,7 @@ use App\Admin\Models\Country;
 use App\Admin\Models\Food;
 use App\Admin\Models\Category;
 use App\Admin\Models\SubCategory;
+use App\Admin\Models\Region;
 
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -82,6 +83,8 @@ class RestaurentController extends AdminController
             $form->select('country_id', __('Country'))->options(Country::all()->pluck('name', 'id'))->rules('required');
             $form->select('state_id', __('State'))->options(State::all()->pluck('name', 'id'))->rules('required');
             $form->select('city_id', __('City'))->options(City::all()->pluck('name', 'id'))->rules('required');
+            $form->multipleSelect('region', 'Regions Avaiable')->options(Region::all()->pluck('name', 'id'));
+            $form->image('image',__('Image'))->uniqueName()->rules('mimes:jpg,jpeg,png');
         },true);
         $form->tab('Food',function(Form $form){
             $form->hasMany('foods', function (Form\NestedForm $form){

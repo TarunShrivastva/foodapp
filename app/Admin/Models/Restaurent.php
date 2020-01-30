@@ -80,4 +80,13 @@ class Restaurent extends Model
         return $this->hasMany(RestaurentReviewRating::class,'restaurent_id');
     }
 
+    /**
+     * To get Restaurent Rating & Review By Restaurent.
+     *
+     * @return object 
+     */
+    public function region()
+    {
+        return $this->belongsToMany(Region::class)->withTimestamps()->withPivot('deleted_at');
+    }
 }

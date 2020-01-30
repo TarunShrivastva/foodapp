@@ -18,11 +18,14 @@ class CreateRestaurentsTable extends Migration
             $table->string('name')->unique();
             $table->string('image');
             $table->string('street');
-            $table->integer('country_id')->unsigned();
-            $table->integer('state_id')->unsigned();
-            $table->integer('city_id')->unsigned();
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('city_id');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');    
         });
     }
 
